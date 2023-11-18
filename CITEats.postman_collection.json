@@ -1,0 +1,416 @@
+{
+	"info": {
+		"_postman_id": "36feff8c-0b31-4d10-9219-fe518475750f",
+		"name": "CITEats",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25500989",
+		"_collection_link": "https://www.postman.com/aviation-architect-24485145/workspace/cit/collection/25500989-36feff8c-0b31-4d10-9219-fe518475750f?action=share&source=collection_link&creator=25500989"
+	},
+	"item": [
+		{
+			"name": "getAllCuisineTypes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cuisinetypes/getAllCuisineTypes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuisinetypes",
+						"getAllCuisineTypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCuisineType",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cuisinetypes/createCuisineType",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuisinetypes",
+						"createCuisineType"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createMenuItem",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/menuitems/createMenuItem",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menuitems",
+						"createMenuItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllMenuItems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/menuitems/getAllMenuItems",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menuitems",
+						"getAllMenuItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createAccount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"john_doe\",\r\n    \"password\": \"securepassword\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"fullName\": \"John Doe\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/createAccount",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"createAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllAccounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/getAllAccounts",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"getAllAccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createFavorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/favorites/createFavorite",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"favorites",
+						"createFavorite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllFavorites",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/favorites/getAllFavorites",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"favorites",
+						"getAllFavorites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addLocation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/location/addLocation",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"addLocation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllLocations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/location/getAllLocations",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"getAllLocations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addRating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ratings/addRating",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"addRating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllRatings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/ratings/getAllRatings",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"getAllRatings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createRestaurants",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/restaurants/createRestaurants",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"createRestaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllRestaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/restaurants/getAllRestaurants",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"getAllRestaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createReview",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/reviews/createReview",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reviews",
+						"createReview"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllReviews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/reviews/getAllReviews",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reviews",
+						"getAllReviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/createUser",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"createUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/getAllUsers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"getAllUsers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
