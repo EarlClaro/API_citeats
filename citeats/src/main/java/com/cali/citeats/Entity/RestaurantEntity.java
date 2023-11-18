@@ -10,7 +10,7 @@ public class RestaurantEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "RestaurantID")
-    private Long restaurantId;
+    private int restaurantId;
 
     @OneToOne
     @JoinColumn(name = "RatingID")
@@ -41,7 +41,7 @@ public class RestaurantEntity {
         super();
     }
 
-    public RestaurantEntity(Long restaurantId, RatingEntity rating, Integer locationId, String name, Date restaurantOpeningHours,
+    public RestaurantEntity(int restaurantId, RatingEntity rating, Integer locationId, String name, Date restaurantOpeningHours,
                             String address, String cuisineType, String phoneNumber, String website) {
         super();
         this.restaurantId = restaurantId;
@@ -56,11 +56,11 @@ public class RestaurantEntity {
     }
 
     // Getters and Setters
-    public Long getRestaurantId() {
+    public int getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(Long restaurantId) {
+    public void setRestaurantId(int restaurantId) {
         this.restaurantId = restaurantId;
     }
 

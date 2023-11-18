@@ -1,12 +1,30 @@
 {
 	"info": {
-		"_postman_id": "36feff8c-0b31-4d10-9219-fe518475750f",
+		"_postman_id": "fc80a828-30a3-4f84-8fe0-01761231961a",
 		"name": "CITEats",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "25500989",
-		"_collection_link": "https://www.postman.com/aviation-architect-24485145/workspace/cit/collection/25500989-36feff8c-0b31-4d10-9219-fe518475750f?action=share&source=collection_link&creator=25500989"
+		"_exporter_id": "30302129"
 	},
 	"item": [
+		{
+			"name": "createCuisineType",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cuisinetypes/createCuisineType",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuisinetypes",
+						"createCuisineType"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "getAllCuisineTypes",
 			"request": {
@@ -27,19 +45,58 @@
 			"response": []
 		},
 		{
-			"name": "createCuisineType",
+			"name": "updateCuisineType",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"typeName\": \"Filipino\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "localhost:8080/cuisinetypes/createCuisineType",
+					"raw": "localhost:8080/cuisinetypes/updateCuisineType/1",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"cuisinetypes",
-						"createCuisineType"
+						"updateCuisineType",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCuisineType",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"typeName\": \"Filipino\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cuisinetypes/deleteCuisineType/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuisinetypes",
+						"deleteCuisineType",
+						"1"
 					]
 				}
 			},
@@ -84,13 +141,62 @@
 			"response": []
 		},
 		{
+			"name": "updateMenuItem",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"restaurantId\": \"1\",\r\n    \"name\": \"Brownie\",\r\n    \"description\": \"a brownie from kilid kilid sa dalan\",\r\n    \"price\": \"20\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/menuitems/updateMenuItem/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menuitems",
+						"updateMenuItem",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteMenuItem",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/menuitems/deleteMenuItem/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menuitems",
+						"deleteMenuItem",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "createAccount",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"john_doe\",\r\n    \"password\": \"securepassword\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"fullName\": \"John Doe\"\r\n}\r\n",
+					"raw": "{\r\n    \"userId\": \"5\",\r\n    \"creationDate\": \"2023-11-18\",\r\n    \"favoriteId\": \"1\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -125,6 +231,64 @@
 					"path": [
 						"accounts",
 						"getAllAccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateAccount",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"5\",\r\n    \"creationDate\": \"2023-11-19\",\r\n    \"favoriteId\": \"3\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/updateAccount/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"updateAccount",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAccount",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/deleteAccount/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"deleteAccount",
+						"1"
 					]
 				}
 			},
@@ -178,13 +342,70 @@
 			"response": []
 		},
 		{
+			"name": "updateFavorite",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": \"1\",\r\n    \"restaurant\": \"1\",\r\n    \"name\": \"Cake\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/favorites/updateFavorite",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"favorites",
+						"updateFavorite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteFavorite",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": \"1\",\r\n    \"restaurant\": \"1\",\r\n    \"name\": \"Cake\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/favorites/deleteFavorite/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"favorites",
+						"deleteFavorite",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "addLocation",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"restaurantId\": \"1\",\r\n    \"latitude\": \"2.5\",\r\n    \"longitude\": \"1.5\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -225,13 +446,71 @@
 			"response": []
 		},
 		{
+			"name": "updateLocation",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"restaurantId\": \"1\",\r\n    \"latitude\": \"2.5\",\r\n    \"longitude\": \"1.5\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/location/updateLocation/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"updateLocation",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteLocation",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"restaurantId\": \"1\",\r\n    \"latitude\": \"2.5\",\r\n    \"longitude\": \"1.5\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/location/deleteLocation/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"deleteLocation",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "addRating",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"restaurant\": \"1\",\r\n    \"averageRating\": \"2.5\",\r\n    \"numberOfRatings\": \"5\"\r\n\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -266,6 +545,64 @@
 					"path": [
 						"ratings",
 						"getAllRatings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateRating",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"restaurant\": \"1\",\r\n    \"averageRating\": \"2.5\",\r\n    \"numberOfRatings\": \"5\"\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ratings/updateRating/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"updateRating",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteRating",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ratings/deleteRating/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"deleteRating",
+						"1"
 					]
 				}
 			},
@@ -319,13 +656,71 @@
 			"response": []
 		},
 		{
+			"name": "updateRestaurants",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"rating\": \"1\",\r\n    \"locationId\": \"1\",\r\n    \"name\": \"Delilah's Eatery\",\r\n    \"restaurantOpeningHours\": \"2023-11-20\",\r\n    \"address\": \"kilid sa dalan\",\r\n    \"cuisineType\": \"Filipino\",\r\n    \"phoneNumber\": \"09270393950\",\r\n    \"website\": \"dEatery.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/restaurants/updateRestaurants/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"updateRestaurants",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteRestaurants",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/restaurants/deleteRestaurants/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"deleteRestaurants",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "createReview",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"userId\": \"1\",\r\n    \"restaurantId\": \"1\",\r\n    \"rating\": \"5\",\r\n    \"comment\": \"mada raman\",\r\n    \"datePosted\": \"2023-18-11\"\r\n    \r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -360,6 +755,45 @@
 					"path": [
 						"reviews",
 						"getAllReviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReview",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/reviews/updateReview",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reviews",
+						"updateReview"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteReview",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/reviews/deleteReview/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reviews",
+						"deleteReview",
+						"1"
 					]
 				}
 			},
@@ -407,6 +841,64 @@
 					"path": [
 						"users",
 						"getAllUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"Johnny Sins\",\r\n    \"password\" : \"123456\",\r\n    \"email\" : \"johnnysins@gmail.com\",\r\n    \"userType\" : \"Student\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/updateUser/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"updateUser",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"Johnny Sins\",\r\n    \"password\" : \"123456\",\r\n    \"email\" : \"johnnysins@gmail.com\",\r\n    \"userType\" : \"Student\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/deleteUser/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"deleteUser",
+						"1"
 					]
 				}
 			},
