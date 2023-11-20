@@ -12,9 +12,8 @@ public class RestaurantEntity {
     @Column(name = "RestaurantID")
     private int restaurantId;
 
-    @OneToOne
-    @JoinColumn(name = "RatingID")
-    private RatingEntity rating;
+    @Column(name = "RatingID")
+    private Integer rating;
 
     @Column(name = "LocationID", nullable = false)
     private Integer locationId;
@@ -41,7 +40,7 @@ public class RestaurantEntity {
         super();
     }
 
-    public RestaurantEntity(int restaurantId, RatingEntity rating, Integer locationId, String name, Date restaurantOpeningHours,
+    public RestaurantEntity(int restaurantId, Integer rating, Integer locationId, String name, Date restaurantOpeningHours,
                             String address, String cuisineType, String phoneNumber, String website) {
         super();
         this.restaurantId = restaurantId;
@@ -64,11 +63,11 @@ public class RestaurantEntity {
         this.restaurantId = restaurantId;
     }
 
-    public RatingEntity getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(RatingEntity rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
