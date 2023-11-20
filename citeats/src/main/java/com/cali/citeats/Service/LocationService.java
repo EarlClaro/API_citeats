@@ -1,6 +1,5 @@
 package com.cali.citeats.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,31 +20,33 @@ public class LocationService {
     }
 
     public List<LocationEntity> getAllLocations() {
-        // Convert Iterable to List
-        List<LocationEntity> locations = new ArrayList<>();
-        locationRepository.findAll().forEach(locations::add);
-        return locations;
+        return (List<LocationEntity>) locationRepository.findAll();
     }
 
     public LocationEntity getLocationById(int locationId) {
         Optional<LocationEntity> optionalLocation = locationRepository.findById(locationId);
+        return optionalLocation.orElse(null);
+    }
 
-        if (optionalLocation.isPresent()) {
-            return optionalLocation.get();
-        } else {
-            throw new RuntimeException("Location not found with id: " + locationId);
+    public LocationEntity updateLocation(int locationId, LocationEntity updatedLocation) {
+        LocationEntity existingLocation = locationRepository.findById(locationId).orElse(null);
+        if (existingLocation != null) {
+            existingLocation.setRestaurantId(updatedLocation.getRestaurantId());
+            existingLocation.setLatitude(updatedLocation.getLatitude());
+            existingLocation.setLongitude(updatedLocation.getLongitude());
+            // Add other fields to update as needed
+            return locationRepository.save(existingLocation);
         }
+        return null;
     }
 
     public String deleteLocation(int locationId) {
         Optional<LocationEntity> optionalLocation = locationRepository.findById(locationId);
-
         if (optionalLocation.isPresent()) {
-            LocationEntity existingLocation = optionalLocation.get();
-            locationRepository.delete(existingLocation);
-            return "Location with id " + locationId + " has been deleted.";
+            locationRepository.deleteById(locationId);
+            return "Location with ID " + locationId + " deleted successfully";
         } else {
-            throw new RuntimeException("Location not found with id: " + locationId);
+            return "Location with ID " + locationId + " not found";
         }
     }
 }

@@ -1,4 +1,3 @@
-// LocationEntity.java
 package com.cali.citeats.Entity;
 
 import javax.persistence.Column;
@@ -18,21 +17,20 @@ public class LocationEntity {
     private int locationId;
 
     @Column(name = "RestaurantID")
-    private int restaurantId;  // Representing RestaurantEntity as an integer
+    private int restaurantId;
 
-    @Column(name = "Latitude")
+    @Column(name = "Latitude", nullable = false)
     private Double latitude;
 
-    @Column(name = "Longitude")
+    @Column(name = "Longitude", nullable = false)
     private Double longitude;
 
+    // Constructors, getters, and setters
+
     public LocationEntity() {
-        super();
     }
 
-    public LocationEntity(int locationId, int restaurantId, Double latitude, Double longitude) {
-        super();
-        this.locationId = locationId;
+    public LocationEntity(int restaurantId, Double latitude, Double longitude) {
         this.restaurantId = restaurantId;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -69,4 +67,6 @@ public class LocationEntity {
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
+
+    // Additional methods if needed
 }
