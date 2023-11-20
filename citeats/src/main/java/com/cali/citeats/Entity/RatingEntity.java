@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,9 +16,8 @@ public class RatingEntity {
     @Column(name = "RatingID")
     private int ratingId;
 
-    @OneToOne
-    @JoinColumn(name = "RestaurantID", unique = true)
-    private RestaurantEntity restaurant;
+    @Column(name = "RestaurantID")
+    private int restaurantId; // Representing RestaurantEntity as an integer
 
     @Column(name = "AverageRating")
     private Double averageRating;
@@ -32,10 +29,10 @@ public class RatingEntity {
         super();
     }
 
-    public RatingEntity(int ratingId, RestaurantEntity restaurant, Double averageRating, Integer numberOfRatings) {
+    public RatingEntity(int ratingId, int restaurantId, Double averageRating, Integer numberOfRatings) {
         super();
         this.ratingId = ratingId;
-        this.restaurant = restaurant;
+        this.restaurantId = restaurantId;
         this.averageRating = averageRating;
         this.numberOfRatings = numberOfRatings;
     }
@@ -48,12 +45,12 @@ public class RatingEntity {
         this.ratingId = ratingId;
     }
 
-    public RestaurantEntity getRestaurant() {
-        return restaurant;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestaurant(RestaurantEntity restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public Double getAverageRating() {

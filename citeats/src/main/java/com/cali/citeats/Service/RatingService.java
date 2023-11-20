@@ -1,4 +1,3 @@
-// RatingService
 package com.cali.citeats.Service;
 
 import java.util.List;
@@ -25,7 +24,7 @@ public class RatingService {
     }
 
     public List<RatingEntity> getRatingByRestaurant(int restaurantId) {
-        return ratingRepository.findByRestaurantRestaurantId(restaurantId);
+        return ratingRepository.findByRestaurantId(restaurantId);
     }
 
     public Double getAverageRatingByRestaurant(int restaurantId) {

@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,9 +17,8 @@ public class LocationEntity {
     @Column(name = "LocationID")
     private int locationId;
 
-    @OneToOne(targetEntity = RestaurantEntity.class)
-    @JoinColumn(name = "restaurantId")
-    private RestaurantEntity restaurant;
+    @Column(name = "RestaurantID")
+    private int restaurantId;  // Representing RestaurantEntity as an integer
 
     @Column(name = "Latitude")
     private Double latitude;
@@ -33,10 +30,10 @@ public class LocationEntity {
         super();
     }
 
-    public LocationEntity(int locationId, RestaurantEntity restaurant, Double latitude, Double longitude) {
+    public LocationEntity(int locationId, int restaurantId, Double latitude, Double longitude) {
         super();
         this.locationId = locationId;
-        this.restaurant = restaurant;
+        this.restaurantId = restaurantId;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -49,12 +46,12 @@ public class LocationEntity {
         this.locationId = locationId;
     }
 
-    public RestaurantEntity getRestaurant() {
-        return restaurant;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestaurant(RestaurantEntity restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public Double getLatitude() {
