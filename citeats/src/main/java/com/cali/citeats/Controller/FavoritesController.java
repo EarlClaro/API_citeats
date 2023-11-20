@@ -14,26 +14,35 @@ import java.util.List;
 public class FavoritesController {
 
     @Autowired
-    private FavoritesService favoriteService;
+    private FavoritesService favoritesService;
 
     // C - Create a favorite
     @PostMapping("/createFavorite")
     public ResponseEntity<FavoritesEntity> createFavorite(@RequestBody FavoritesEntity favorite) {
-        FavoritesEntity createdFavorite = favoriteService.createFavorite(favorite);
+        FavoritesEntity createdFavorite = favoritesService.createFavorite(
+            favorite.getUserId(),
+            favorite.getRestaurantId(),
+            favorite.getName()
+        );
         return new ResponseEntity<>(createdFavorite, HttpStatus.CREATED);
     }
 
     // R - Read all favorites
     @GetMapping("/getAllFavorites")
     public ResponseEntity<List<FavoritesEntity>> getAllFavorites() {
-        List<FavoritesEntity> favorites = favoriteService.getAllFavorites();
+        List<FavoritesEntity> favorites = favoritesService.getAllFavorites();
         return new ResponseEntity<>(favorites, HttpStatus.OK);
     }
 
     // U - Update a favorite
     @PutMapping("/updateFavorite/{id}")
     public ResponseEntity<FavoritesEntity> updateFavorite(@PathVariable int id, @RequestBody FavoritesEntity favorite) {
-        FavoritesEntity updatedFavorite = favoriteService.updateFavorite(id, favorite);
+        FavoritesEntity updatedFavorite = favoritesService.updateFavorite(
+            id,
+            favorite.getUserId(),
+            favorite.getRestaurantId(),
+            favorite.getName()
+        );
         if (updatedFavorite != null) {
             return new ResponseEntity<>(updatedFavorite, HttpStatus.OK);
         } else {
@@ -44,7 +53,7 @@ public class FavoritesController {
     // D - Delete a favorite
     @DeleteMapping("/deleteFavorite/{id}")
     public ResponseEntity<Void> deleteFavorite(@PathVariable int id) {
-        if (favoriteService.deleteFavorite(id)) {
+        if (favoritesService.deleteFavorite(id)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

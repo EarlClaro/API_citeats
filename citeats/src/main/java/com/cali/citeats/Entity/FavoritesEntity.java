@@ -1,14 +1,6 @@
 package com.cali.citeats.Entity;
 
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tblfavorite")
@@ -19,13 +11,11 @@ public class FavoritesEntity {
     @Column(name = "favorite_id")
     private int favoriteId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
+    @Column(name = "user_id")
+    private int userId;
 
-    @ManyToOne
-    @JoinColumn(name = "restaurant_id", nullable = false)
-    private RestaurantEntity restaurant;
+    @Column(name = "restaurant_id")
+    private int restaurantId;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -34,11 +24,11 @@ public class FavoritesEntity {
         super();
     }
 
-    public FavoritesEntity(int favoriteId, UserEntity user, RestaurantEntity restaurant, String name) {
+    public FavoritesEntity(int favoriteId, int userId, int restaurantId, String name) {
         super();
         this.favoriteId = favoriteId;
-        this.user = user;
-        this.restaurant = restaurant;
+        this.userId = userId;
+        this.restaurantId = restaurantId;
         this.name = name;
     }
 
@@ -50,20 +40,20 @@ public class FavoritesEntity {
         this.favoriteId = favoriteId;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public RestaurantEntity getRestaurant() {
-        return restaurant;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestaurant(RestaurantEntity restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public String getName() {
