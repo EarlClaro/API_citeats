@@ -1,14 +1,10 @@
 package com.cali.citeats.Entity;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -21,13 +17,11 @@ public class ReviewEntity {
     @Column(name = "ReviewID")
     private int reviewId;
 
-    @ManyToOne
-    @JoinColumn(name = "UserID")
-    private UserEntity user;
+    @Column(name = "UserID")
+    private int userId; // Representing User ID as an integer
 
-    @ManyToOne
-    @JoinColumn(name = "RestaurantID")
-    private RestaurantEntity restaurant;
+    @Column(name = "RestaurantID")
+    private int restaurantId; // Representing Restaurant ID as an integer
 
     @Column(name = "Rating")
     private Integer rating;
@@ -39,18 +33,20 @@ public class ReviewEntity {
     private Date datePosted;
 
     public ReviewEntity() {
-        super();
+        // Default constructor
     }
 
-    public ReviewEntity(int reviewId, UserEntity user, RestaurantEntity restaurant, Integer rating, String comment, Date datePosted) {
-        super();
-        this.reviewId = reviewId;
-        this.user = user;
-        this.restaurant = restaurant;
+    // Constructor without ID
+    public ReviewEntity(int userId, int restaurantId, Integer rating, String comment, Date datePosted) {
+        this.userId = userId;
+        this.restaurantId = restaurantId;
         this.rating = rating;
         this.comment = comment;
         this.datePosted = datePosted;
     }
+
+    // Getters and Setters
+    // (Omitted for brevity)
 
     public int getReviewId() {
         return reviewId;
@@ -60,20 +56,20 @@ public class ReviewEntity {
         this.reviewId = reviewId;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public RestaurantEntity getRestaurant() {
-        return restaurant;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestaurant(RestaurantEntity restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public Integer getRating() {

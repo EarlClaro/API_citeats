@@ -1,12 +1,9 @@
 package com.cali.citeats.Controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import com.cali.citeats.Entity.ReviewEntity;
 import com.cali.citeats.Service.ReviewService;
-
 import java.util.List;
 
 @RestController
@@ -23,7 +20,13 @@ public class ReviewController {
 
     @PostMapping("/createReview")
     public ReviewEntity createReview(@RequestBody ReviewEntity review) {
-        return reviewService.createReview(review);
+        return reviewService.createReview(
+            review.getUserId(), 
+            review.getRestaurantId(), 
+            review.getRating(), 
+            review.getComment(), 
+            review.getDatePosted()
+        );
     }
 
     @GetMapping("/getAllReviews")
@@ -38,7 +41,14 @@ public class ReviewController {
 
     @PutMapping("/updateReview/{reviewId}")
     public ReviewEntity updateReview(@PathVariable int reviewId, @RequestBody ReviewEntity updatedReview) {
-        return reviewService.updateReview(reviewId, updatedReview);
+        return reviewService.updateReview(
+            reviewId, 
+            updatedReview.getUserId(), 
+            updatedReview.getRestaurantId(), 
+            updatedReview.getRating(), 
+            updatedReview.getComment(), 
+            updatedReview.getDatePosted()
+        );
     }
 
     @DeleteMapping("/deleteReview/{reviewId}")

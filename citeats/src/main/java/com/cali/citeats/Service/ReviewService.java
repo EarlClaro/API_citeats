@@ -1,14 +1,11 @@
 package com.cali.citeats.Service;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.cali.citeats.Entity.ReviewEntity;
 import com.cali.citeats.Repository.ReviewRepository;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class ReviewService {
@@ -16,38 +13,43 @@ public class ReviewService {
     @Autowired
     private ReviewRepository reviewRepository;
 
-    public ReviewEntity createReview(ReviewEntity review) {
-        return reviewRepository.save(review);
+    // Create a review
+    public ReviewEntity createReview(int userId, int restaurantId, Integer rating, String comment, Date datePosted) {
+        ReviewEntity newReview = new ReviewEntity(userId, restaurantId, rating, comment, datePosted);
+        return reviewRepository.save(newReview);
     }
 
+    // Get all reviews
     public List<ReviewEntity> getAllReviews() {
         return reviewRepository.findAll();
     }
 
+    // Get review by ID
     public ReviewEntity getReviewById(int reviewId) {
-        return reviewRepository.findById(reviewId)
-                .orElseThrow(() -> new NoSuchElementException("Review with ID: " + reviewId + " not found"));
+        return reviewRepository.findById(reviewId).orElse(null);
     }
 
-    public ReviewEntity updateReview(int reviewId, ReviewEntity updatedReview) {
-        ReviewEntity review = reviewRepository.findById(reviewId)
-                .orElseThrow(() -> new NoSuchElementException("Review with ID: " + reviewId + " not found"));
-
-        review.setUser(updatedReview.getUser()); // Assuming setUserId exists in ReviewEntity
-        review.setRestaurant(updatedReview.getRestaurant()); // Assuming setRestaurantId exists in ReviewEntity
-        review.setRating(updatedReview.getRating()); // Assuming setRating exists in ReviewEntity
-        review.setComment(updatedReview.getComment()); // Assuming setComment exists in ReviewEntity
-        review.setDatePosted(updatedReview.getDatePosted()); // Assuming setDatePosted exists in ReviewEntity
-
-        return reviewRepository.save(review);
-    }
-
-    public String deleteReview(int reviewId) {
-        if (reviewRepository.existsById(reviewId)) {
-            reviewRepository.deleteById(reviewId);
-            return "Review with ID: " + reviewId + " deleted successfully";
-        } else {
-            return "Review with ID: " + reviewId + " not found";
+    // Update a review
+    public ReviewEntity updateReview(int reviewId, int userId, int restaurantId, Integer rating, String comment, Date datePosted) {
+        ReviewEntity existingReview = reviewRepository.findById(reviewId).orElse(null);
+        if (existingReview != null) {
+            existingReview.setUserId(userId);
+            existingReview.setRestaurantId(restaurantId);
+            existingReview.setRating(rating);
+            existingReview.setComment(comment);
+            existingReview.setDatePosted(datePosted);
+            return reviewRepository.save(existingReview);
         }
+        return null;
+    }
+
+    // Delete a review
+    public String deleteReview(int reviewId) {
+        ReviewEntity existingReview = reviewRepository.findById(reviewId).orElse(null);
+        if (existingReview != null) {
+            reviewRepository.delete(existingReview);
+            return "Review deleted successfully";
+        }
+        return "Review not found";
     }
 }
