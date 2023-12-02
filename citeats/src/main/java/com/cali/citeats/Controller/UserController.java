@@ -12,12 +12,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-<<<<<<< HEAD
-@CrossOrigin(origins = "http://localhost:3000") 
-=======
-@CrossOrigin(origins = "http://localhost:3000") // Specify the allowed origin
 
->>>>>>> 2c7071aab918470f74d472f27f6c0eb2ed27b02c
+@CrossOrigin(origins = "http://localhost:3000") 
 public class UserController {
 
     @Autowired
