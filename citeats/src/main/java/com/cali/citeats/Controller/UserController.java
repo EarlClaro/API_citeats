@@ -11,10 +11,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:3000") 
 public class UserController {
 
     @Autowired
     private UserService userService;
+    
+    //Get user by ID
+    @GetMapping("/{userId}")
+    public UserEntity getUserById(@PathVariable int userId) {
+        return userService.getUserById(userId);
+    }
 
     // C - Create a user
     @PostMapping("/createUser")
@@ -31,20 +38,21 @@ public class UserController {
     }
 
     // U - Update a user
-    @PutMapping("/updateUser/{id}")
-    public ResponseEntity<UserEntity> updateUser(@PathVariable int id, @RequestBody UserEntity user) {
+    @PutMapping("/updateUser/{userId}")
+    public ResponseEntity<UserEntity> updateUser(@PathVariable int userId, @RequestBody UserEntity user) {
         try {
-            UserEntity updatedUser = userService.updateUser(id, user);
+            UserEntity updatedUser = userService.updateUser(userId, user);
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
+
     // D - Delete a user
-    @DeleteMapping("/deleteUser/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable int id) {
-        String result = userService.deleteUser(id);
+    @DeleteMapping("/deleteUser/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable int userId) {
+        String result = userService.deleteUser(userId);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

@@ -4,10 +4,13 @@ import com.cali.citeats.Entity.ReviewEntity;
 import com.cali.citeats.Repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import java.util.Date;
 import java.util.List;
 
 @Service
+@CrossOrigin(origins = "http://localhost:3000") 
 public class ReviewService {
 
     @Autowired
