@@ -22,7 +22,7 @@ public class RestaurantEntity {
     private String name;
 
     @Column(name = "RestaurantOpeningHours")
-    private Date restaurantOpeningHours;
+    private String restaurantOpeningHours; // Changed to String
 
     @Column(name = "Address", nullable = false)
     private String address;
@@ -40,7 +40,7 @@ public class RestaurantEntity {
         super();
     }
 
-    public RestaurantEntity(int restaurantId, Integer rating, Integer locationId, String name, Date restaurantOpeningHours,
+    public RestaurantEntity(int restaurantId, Integer rating, Integer locationId, String name, String restaurantOpeningHours,
                             String address, String cuisineType, String phoneNumber, String website) {
         super();
         this.restaurantId = restaurantId;
@@ -87,11 +87,11 @@ public class RestaurantEntity {
         this.name = name;
     }
 
-    public Date getRestaurantOpeningHours() {
+    public String getRestaurantOpeningHours() {
         return restaurantOpeningHours;
     }
 
-    public void setRestaurantOpeningHours(Date restaurantOpeningHours) {
+    public void setRestaurantOpeningHours(String restaurantOpeningHours) {
         this.restaurantOpeningHours = restaurantOpeningHours;
     }
 

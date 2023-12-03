@@ -34,7 +34,8 @@ public class RestaurantService {
             // Update restaurant properties based on your needs
             RestaurantEntity updatedRestaurant = existingRestaurant.get();
             updatedRestaurant.setName(restaurant.getName());
-            updatedRestaurant.setRating(id);
+            updatedRestaurant.setRating(restaurant.getRating());
+            updatedRestaurant.setLocationId(restaurant.getLocationId());
             updatedRestaurant.setRestaurantOpeningHours(restaurant.getRestaurantOpeningHours());
             updatedRestaurant.setAddress(restaurant.getAddress());
             updatedRestaurant.setCuisineType(restaurant.getCuisineType());

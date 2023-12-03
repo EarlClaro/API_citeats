@@ -25,15 +25,19 @@ public class LocationEntity {
     @Column(name = "Longitude", nullable = false)
     private Double longitude;
 
+    @Column(name = "GoogleMapLink")
+    private String googleMapLink;
+
     // Constructors, getters, and setters
 
     public LocationEntity() {
     }
 
-    public LocationEntity(int restaurantId, Double latitude, Double longitude) {
+    public LocationEntity(int restaurantId, Double latitude, Double longitude, String googleMapLink) {
         this.restaurantId = restaurantId;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.googleMapLink = googleMapLink;
     }
 
     public int getLocationId() {
@@ -66,6 +70,14 @@ public class LocationEntity {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public String getGoogleMapLink() {
+        return googleMapLink;
+    }
+
+    public void setGoogleMapLink(String googleMapLink) {
+        this.googleMapLink = googleMapLink;
     }
 
     // Additional methods if needed
