@@ -12,6 +12,7 @@ import com.cali.citeats.Service.LocationService;
 
 @RestController
 @RequestMapping("/location")
+@CrossOrigin(origins = "http://localhost:3000")
 public class LocationController {
 
     @Autowired

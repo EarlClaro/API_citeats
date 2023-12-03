@@ -4,9 +4,12 @@ import com.cali.citeats.Entity.FavoritesEntity;
 import com.cali.citeats.Repository.FavoritesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import java.util.List;
 
 @Service
+@CrossOrigin(origins = "http://localhost:3000") 
 public class FavoritesService {
 
     @Autowired
