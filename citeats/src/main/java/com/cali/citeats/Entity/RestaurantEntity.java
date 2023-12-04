@@ -21,7 +21,7 @@ public class RestaurantEntity {
     private String name;
 
     @Column(name = "RestaurantOpeningHours")
-    private String restaurantOpeningHours;
+    private String restaurantOpeningHours; 
 
     @Column(name = "Address", nullable = false)
     private String address;

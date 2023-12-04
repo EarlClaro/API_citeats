@@ -36,6 +36,7 @@ public class LocationService {
             existingLocation.setRestaurantId(updatedLocation.getRestaurantId());
             existingLocation.setLatitude(updatedLocation.getLatitude());
             existingLocation.setLongitude(updatedLocation.getLongitude());
+            existingLocation.setGoogleMapLink(updatedLocation.getGoogleMapLink()); // Add this line to set the GoogleMapLink
             // Add other fields to update as needed
             return locationRepository.save(existingLocation);
         }
