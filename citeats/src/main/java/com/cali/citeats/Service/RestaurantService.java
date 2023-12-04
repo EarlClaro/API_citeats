@@ -19,6 +19,12 @@ public class RestaurantService {
     public RestaurantService(RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
     }
+    
+    //Get restaurant by Id
+    public RestaurantEntity getRestaurantById(int id) {
+        // Implement logic to get the restaurant by ID from the repository
+        return restaurantRepository.findById(id).orElse(null);
+    }
 
     public List<RestaurantEntity> getAllRestaurants() {
         return restaurantRepository.findAll();

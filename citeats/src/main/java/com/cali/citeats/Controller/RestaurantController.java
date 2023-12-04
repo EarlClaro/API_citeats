@@ -16,6 +16,17 @@ public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<RestaurantEntity> getRestaurantById(@PathVariable int id) {
+        RestaurantEntity restaurant = restaurantService.getRestaurantById(id);
+
+        if (restaurant != null) {
+            return ResponseEntity.ok(restaurant);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     // C - Create a restaurant
     @PostMapping("/createRestaurants")
