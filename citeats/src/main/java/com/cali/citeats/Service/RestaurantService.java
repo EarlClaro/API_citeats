@@ -41,7 +41,7 @@ public class RestaurantService {
             updatedRestaurant.setAddress(restaurant.getAddress());
             updatedRestaurant.setCuisineType(restaurant.getCuisineType());
             updatedRestaurant.setPhoneNumber(restaurant.getPhoneNumber());
-            updatedRestaurant.setWebsite(restaurant.getWebsite());
+
 
             return restaurantRepository.save(updatedRestaurant);
         } else {
