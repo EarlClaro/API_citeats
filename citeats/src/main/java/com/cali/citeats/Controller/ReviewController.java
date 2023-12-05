@@ -39,6 +39,11 @@ public class ReviewController {
     public ReviewEntity getReviewById(@PathVariable int reviewId) {
         return reviewService.getReviewById(reviewId);
     }
+    
+    @GetMapping("/getReviewsByRestaurantId/{restaurantId}")
+    public List<ReviewEntity> getReviewsByRestaurantId(@PathVariable int restaurantId) {
+        return reviewService.getReviewsByRestaurantId(restaurantId);
+    }
 
     @PutMapping("/updateReview/{reviewId}")
     public ReviewEntity updateReview(@PathVariable int reviewId, @RequestBody ReviewEntity updatedReview) {

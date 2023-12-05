@@ -43,7 +43,6 @@ public class RestaurantService {
             RestaurantEntity updatedRestaurant = existingRestaurant.get();
             updatedRestaurant.setName(restaurant.getName());
             updatedRestaurant.setRating(restaurant.getRating());
-            updatedRestaurant.setLocationId(restaurant.getLocationId());
             updatedRestaurant.setRestaurantOpeningHours(restaurant.getRestaurantOpeningHours());
             updatedRestaurant.setAddress(restaurant.getAddress());
             updatedRestaurant.setCuisineType(restaurant.getCuisineType());
@@ -56,6 +55,47 @@ public class RestaurantService {
             throw new RuntimeException("Restaurant not found with id: " + id);
         }
     }
+    
+    //Handles restaurant profile update without rating
+    public RestaurantEntity updateRestaurantProfile(Integer id, RestaurantEntity restaurant) {
+        Optional<RestaurantEntity> existingRestaurant = restaurantRepository.findById(id);
+
+        if (existingRestaurant.isPresent()) {
+            // Update restaurant properties based on your needs
+            RestaurantEntity updatedRestaurant = existingRestaurant.get();
+
+            if (restaurant.getName() != null) {
+                updatedRestaurant.setName(restaurant.getName());
+            }
+
+            if (restaurant.getRestaurantOpeningHours() != null) {
+                updatedRestaurant.setRestaurantOpeningHours(restaurant.getRestaurantOpeningHours());
+            }
+
+            if (restaurant.getAddress() != null) {
+                updatedRestaurant.setAddress(restaurant.getAddress());
+            }
+
+            if (restaurant.getCuisineType() != null) {
+                updatedRestaurant.setCuisineType(restaurant.getCuisineType());
+            }
+
+            if (restaurant.getPhoneNumber() != null) {
+                updatedRestaurant.setPhoneNumber(restaurant.getPhoneNumber());
+            }
+
+            // Exclude the rating from the update to prevent it from being set to null
+
+            // You can add conditions for other fields as needed
+
+            return restaurantRepository.save(updatedRestaurant);
+        } else {
+            // Handle the case where the restaurant with the given id is not found
+            throw new RuntimeException("Restaurant not found with id: " + id);
+        }
+    }
+
+
 
     public void deleteRestaurant(Integer id) {
         if (restaurantRepository.existsById(id)) {

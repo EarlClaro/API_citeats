@@ -31,6 +31,11 @@ public class ReviewService {
     public ReviewEntity getReviewById(int reviewId) {
         return reviewRepository.findById(reviewId).orElse(null);
     }
+    
+    public List<ReviewEntity> getReviewsByRestaurantId(int restaurantId) {
+        // Implement logic to fetch reviews by restaurant ID from your repository
+        return reviewRepository.findByRestaurantId(restaurantId);
+    }
 
     // Update a review
     public ReviewEntity updateReview(int reviewId, int userId, int restaurantId, Integer rating, String comment, Date datePosted) {

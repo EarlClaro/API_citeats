@@ -52,6 +52,31 @@ public class RestaurantController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
+ // U - Update a restaurant profile
+    @PutMapping("/updateRestaurantsProfile/{id}")
+    public ResponseEntity<RestaurantEntity> updateRestaurantProfile(@PathVariable Integer id, @RequestBody RestaurantEntity updatedFields) {
+        RestaurantEntity existingRestaurant = restaurantService.getRestaurantById(id);
+
+        if (existingRestaurant != null) {
+            // Create a new instance and copy the fields to be updated (excluding rating)
+            RestaurantEntity updatedRestaurant = new RestaurantEntity();
+            updatedRestaurant.setRestaurantId(id);
+            updatedRestaurant.setName(updatedFields.getName());
+            updatedRestaurant.setRestaurantOpeningHours(updatedFields.getRestaurantOpeningHours());
+            updatedRestaurant.setAddress(updatedFields.getAddress());
+            updatedRestaurant.setCuisineType(updatedFields.getCuisineType());
+            updatedRestaurant.setPhoneNumber(updatedFields.getPhoneNumber());
+
+            // Perform the update
+            updatedRestaurant = restaurantService.updateRestaurantProfile(id, updatedRestaurant);
+
+            return new ResponseEntity<>(updatedRestaurant, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
     // D - Delete a restaurant
     @DeleteMapping("/deleteRestaurants/{id}")
