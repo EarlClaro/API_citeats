@@ -66,4 +66,18 @@ public class UserService {
             return "User with ID " + userId + " not found";
         }
     }
+
+    public UserEntity findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+    
+    public void updatePassword(int userId, String newPassword) {
+        UserEntity user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + userId));
+
+        // Update user password (you should hash the password before saving)
+        user.setPassword(newPassword);
+
+        userRepository.save(user);
+    }
 }

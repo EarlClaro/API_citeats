@@ -12,7 +12,7 @@ public class RestaurantEntity {
     private int restaurantId;
 
     @Column(name = "RatingID")
-    private Double rating;
+    private Float rating;
 
     @Column(name = "LocationID", nullable = false)
     private Integer locationId;
@@ -39,7 +39,7 @@ public class RestaurantEntity {
         super();
     }
 
-    public RestaurantEntity(int restaurantId, Double rating, Integer locationId, String name, String restaurantOpeningHours,
+    public RestaurantEntity(int restaurantId, Float rating, Integer locationId, String name, String restaurantOpeningHours,
                             String address, String cuisineType, String phoneNumber, String website) {
         super();
         this.restaurantId = restaurantId;
@@ -62,11 +62,11 @@ public class RestaurantEntity {
         this.restaurantId = restaurantId;
     }
 
-    public Double getRating() {
+    public Float getRating() {
         return rating;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(Float rating) {
         this.rating = rating;
     }
 

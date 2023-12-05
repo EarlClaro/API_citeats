@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
@@ -24,6 +25,7 @@ public class UserController {
     public UserEntity getUserById(@PathVariable int userId) {
         return userService.getUserById(userId);
     }
+    
 
     // C - Create a user
     @PostMapping("/createUser")
@@ -39,6 +41,30 @@ public class UserController {
         List<UserEntity> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+    
+    //Get user by email
+    @GetMapping("/by-email/{email}")
+    public ResponseEntity<UserEntity> getUserByEmail(@PathVariable String email) {
+        UserEntity user = userService.findByEmail(email);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @PutMapping("/updatePassword/{userId}")
+    public ResponseEntity<String> updatePassword(@PathVariable int userId, @RequestBody Map<String, String> request) {
+        String newPassword = request.get("newPassword");
+        if (newPassword == null || newPassword.isEmpty()) {
+            return ResponseEntity.badRequest().body("New password cannot be empty.");
+        }
+
+        userService.updatePassword(userId, newPassword);
+        return ResponseEntity.ok("Password updated successfully.");
+    }
+
+
 
     // U - Update a user
     @PutMapping("/updateUser/{userId}")
