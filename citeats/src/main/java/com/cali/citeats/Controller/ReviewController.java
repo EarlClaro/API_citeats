@@ -1,6 +1,8 @@
 package com.cali.citeats.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.cali.citeats.Entity.ReviewEntity;
 import com.cali.citeats.Service.ReviewService;
@@ -17,6 +19,20 @@ public class ReviewController {
     @GetMapping("/hello")
     public String helloReview() {
         return "Hello, Reviews!";
+    }
+    
+    @GetMapping("/getReviewsByUserId/{userId}")
+    public ResponseEntity<List<ReviewEntity>> getReviewsByUserId(@PathVariable int userId) {
+        try {
+            List<ReviewEntity> reviews = reviewService.getReviewsByUserId(userId);
+            if (!reviews.isEmpty()) {
+                return ResponseEntity.ok(reviews);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PostMapping("/createReview")

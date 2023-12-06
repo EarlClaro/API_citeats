@@ -21,6 +21,11 @@ public class ReviewService {
         ReviewEntity newReview = new ReviewEntity(userId, restaurantId, rating, comment, datePosted);
         return reviewRepository.save(newReview);
     }
+    
+    //Get review by userId
+    public List<ReviewEntity> getReviewsByUserId(int userId) {
+        return reviewRepository.findByUserId(userId);
+    }
 
     // Get all reviews
     public List<ReviewEntity> getAllReviews() {
