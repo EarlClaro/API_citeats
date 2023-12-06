@@ -31,6 +31,17 @@ public class MenuItemController {
         return new ResponseEntity<>(menuItems, HttpStatus.OK);
     }
 
+    // R - Read a menu item by ID
+    @GetMapping("/getMenuItemById/{id}")
+    public ResponseEntity<MenuItemEntity> getMenuItemById(@PathVariable int id) {
+        MenuItemEntity menuItem = menuItemService.getMenuItemById(id);
+        if (menuItem != null) {
+            return new ResponseEntity<>(menuItem, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     // U - Update a menu item
     @PutMapping("/updateMenuItem/{id}")
     public ResponseEntity<MenuItemEntity> updateMenuItem(@PathVariable int id, @RequestBody MenuItemEntity menuItem) {
