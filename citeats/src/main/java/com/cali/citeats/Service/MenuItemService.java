@@ -52,4 +52,7 @@ public class MenuItemService {
             return "Menu item with ID " + id + " not found";
         }
     }
+    public List<MenuItemEntity> getMenuItemsByRestaurantId(int restaurantId) {
+        return menuItemRepository.findByRestaurantId(restaurantId);
+    }
 }

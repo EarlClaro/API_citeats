@@ -41,7 +41,16 @@ public class MenuItemController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+    // R - Read menu items by restaurant ID
+    @GetMapping("/getByRestaurantId/{restaurantId}")
+    public ResponseEntity<List<MenuItemEntity>> getMenuItemsByRestaurantId(@PathVariable int restaurantId) {
+        List<MenuItemEntity> menuItems = menuItemService.getMenuItemsByRestaurantId(restaurantId);
+        if (!menuItems.isEmpty()) {
+            return new ResponseEntity<>(menuItems, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
     // U - Update a menu item
     @PutMapping("/updateMenuItem/{id}")
     public ResponseEntity<MenuItemEntity> updateMenuItem(@PathVariable int id, @RequestBody MenuItemEntity menuItem) {
