@@ -14,11 +14,17 @@ public class RestaurantEntity {
     @Column(name = "RatingID")
     private Float rating;
 
-    @Column(name = "LocationID", nullable = false)
+    @Column(name = "LocationID")
     private Integer locationId;
-
+    
     @Column(name = "Name", nullable = false)
     private String name;
+    
+    @Column(name = "email", nullable = false)
+    private String  email;
+    
+    @Column(name = "password", nullable = false)
+    private String password;
 
     @Column(name = "RestaurantOpeningHours")
     private String restaurantOpeningHours; 
@@ -40,7 +46,7 @@ public class RestaurantEntity {
     }
 
     public RestaurantEntity(int restaurantId, Float rating, Integer locationId, String name, String restaurantOpeningHours,
-                            String address, String cuisineType, String phoneNumber, String website) {
+                            String address, String cuisineType, String phoneNumber, String website, String password, String email) {
         super();
         this.restaurantId = restaurantId;
         this.rating = rating;
@@ -51,9 +57,26 @@ public class RestaurantEntity {
         this.cuisineType = cuisineType;
         this.phoneNumber = phoneNumber;
         this.website = website;
+        this.password = password;
+        this.email = email;
     }
-
     // Getters and Setters
+    
+    public String getEmail() {
+    	return email;
+    }
+    
+    public void setEmail(String email) {
+    	this.email = email;
+    }
+    
+    public String getPassword() {
+    	return password;
+    }
+    
+    public void setPassword(String password) {
+    	this.password = password;
+    }
     public int getRestaurantId() {
         return restaurantId;
     }
