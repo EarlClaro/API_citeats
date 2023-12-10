@@ -17,8 +17,8 @@ public class RestaurantEntity {
     @Column(name = "LocationID")
     private Integer locationId;
     
-    @Column(name = "Name", nullable = false)
-    private String name;
+    @Column(name = "restaurantName", nullable = false)
+    private String restaurantName;
     
     @Column(name = "email", nullable = false)
     private String  email;
@@ -45,13 +45,13 @@ public class RestaurantEntity {
         super();
     }
 
-    public RestaurantEntity(int restaurantId, Float rating, Integer locationId, String name, String restaurantOpeningHours,
+    public RestaurantEntity(int restaurantId, Float rating, Integer locationId, String restaurantName, String restaurantOpeningHours,
                             String address, String cuisineType, String phoneNumber, String website, String password, String email) {
         super();
         this.restaurantId = restaurantId;
         this.rating = rating;
         this.locationId = locationId;
-        this.name = name;
+        this.restaurantName = restaurantName;
         this.restaurantOpeningHours = restaurantOpeningHours;
         this.address = address;
         this.cuisineType = cuisineType;
@@ -101,12 +101,12 @@ public class RestaurantEntity {
         this.locationId = locationId;
     }
 
-    public String getName() {
-        return name;
+    public String getrestaurantName() {
+        return restaurantName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setrestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
     public String getRestaurantOpeningHours() {

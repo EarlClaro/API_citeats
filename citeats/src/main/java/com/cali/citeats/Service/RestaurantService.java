@@ -12,10 +12,11 @@ import java.util.Optional;
 @Service
 @CrossOrigin(origins = "http://localhost:3000") 
 public class RestaurantService {
-
+	
+	@Autowired
     private final RestaurantRepository restaurantRepository;
 
-    @Autowired
+    
     public RestaurantService(RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
     }
@@ -25,7 +26,7 @@ public class RestaurantService {
         // Implement logic to get the restaurant by ID from the repository
         return restaurantRepository.findById(id).orElse(null);
     }
-
+    
     public List<RestaurantEntity> getAllRestaurants() {
         return restaurantRepository.findAll();
     }
@@ -41,7 +42,7 @@ public class RestaurantService {
         if (existingRestaurant.isPresent()) {
             // Update restaurant properties based on your needs
             RestaurantEntity updatedRestaurant = existingRestaurant.get();
-            updatedRestaurant.setName(restaurant.getName());
+            updatedRestaurant.setrestaurantName(restaurant.getrestaurantName());
             updatedRestaurant.setRating(restaurant.getRating());
             updatedRestaurant.setRestaurantOpeningHours(restaurant.getRestaurantOpeningHours());
             updatedRestaurant.setAddress(restaurant.getAddress());
@@ -64,8 +65,8 @@ public class RestaurantService {
             // Update restaurant properties based on your needs
             RestaurantEntity updatedRestaurant = existingRestaurant.get();
 
-            if (restaurant.getName() != null) {
-                updatedRestaurant.setName(restaurant.getName());
+            if (restaurant.getrestaurantName() != null) {
+                updatedRestaurant.setrestaurantName(restaurant.getrestaurantName());
             }
 
             if (restaurant.getRestaurantOpeningHours() != null) {
@@ -85,8 +86,6 @@ public class RestaurantService {
             }
 
             // Exclude the rating from the update to prevent it from being set to null
-
-            // You can add conditions for other fields as needed
 
             return restaurantRepository.save(updatedRestaurant);
         } else {
