@@ -27,6 +27,32 @@ public class RestaurantService {
         return restaurantRepository.findById(id).orElse(null);
     }
     
+    public RestaurantEntity getRestaurantByEmail(String email) {
+        Optional<RestaurantEntity> restaurantOptional = restaurantRepository.findByEmail(email);
+
+        if (restaurantOptional.isPresent()) {
+            return restaurantOptional.get();
+        } else {
+            return null; // or throw an exception based on your business logic
+        }
+    }
+    
+    public RestaurantEntity updateRestaurantPassword(Integer restaurantId, String newPassword) {
+        Optional<RestaurantEntity> optionalRestaurant = restaurantRepository.findById(restaurantId);
+
+        if (optionalRestaurant.isPresent()) {
+            RestaurantEntity restaurant = optionalRestaurant.get();
+            
+            // Add validation logic or encryption if needed
+            restaurant.setPassword(newPassword);
+
+            return restaurantRepository.save(restaurant);
+        } else {
+            throw new RuntimeException("Restaurant not found");
+        }
+    }
+
+    
     public List<RestaurantEntity> getAllRestaurants() {
         return restaurantRepository.findAll();
     }

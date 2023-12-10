@@ -75,7 +75,6 @@ public class UserService {
         UserEntity user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + userId));
 
-        // Update user password (you should hash the password before saving)
         user.setPassword(newPassword);
 
         userRepository.save(user);

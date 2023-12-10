@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/restaurants")
@@ -31,6 +32,35 @@ public class RestaurantController {
     public List<RestaurantEntity> getAllRestaurants() {
         return restaurantService.getAllRestaurants();
     }
+    
+    @GetMapping("/findByEmail/{email}")
+    public RestaurantEntity getRestaurantByEmail(@PathVariable String email) {
+        RestaurantEntity restaurant = restaurantService.getRestaurantByEmail(email);
+
+        if (restaurant != null) {
+            return restaurant;
+        } else {
+            throw new RuntimeException("Restaurant not found for email: " + email);
+        }
+        
+    }
+    
+    @PutMapping("/updatePassword/{restaurantId}")
+    public String updatePassword(@PathVariable Integer restaurantId, @RequestBody Map<String, String> requestBody) {
+        try {
+            String newPassword = requestBody.get("newPassword");
+
+            if (newPassword == null || newPassword.isEmpty()) {
+                throw new IllegalArgumentException("New password cannot be null or empty.");
+            }
+
+            restaurantService.updateRestaurantPassword(restaurantId, newPassword);
+            return "Password updated successfully.";
+        } catch (Exception e) {
+            return "Error updating password.";
+        }
+    }
+
 
     @PutMapping("/updateRestaurants/{id}")
     public RestaurantEntity updateRestaurant(@PathVariable Integer id, @RequestBody RestaurantEntity restaurant) {
