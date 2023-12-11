@@ -27,6 +27,10 @@ public class FavoritesService {
         return favoritesRepository.findAll();
     }
 
+    public List<FavoritesEntity> getAllFavoritesByUserId(int userId) {
+        return (List<FavoritesEntity>) favoritesRepository.findAllByUserId(userId);
+    }
+    
     public FavoritesEntity updateFavorite(int id, int userId, int restaurantId, String name) {
         FavoritesEntity existingFavorite = favoritesRepository.findById(id).orElse(null);
         if (existingFavorite != null) {

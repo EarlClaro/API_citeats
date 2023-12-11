@@ -17,6 +17,9 @@ public class FavoritesController {
     @Autowired
     private FavoritesService favoritesService;
 
+    @GetMapping("/{userId}")
+    public List<FavoritesEntity> getAllFavoritesByUserId(@PathVariable int userId) {
+        return favoritesService.getAllFavoritesByUserId(userId);}
     // C - Create a favorite
     @PostMapping("/createFavorite")
     public ResponseEntity<FavoritesEntity> createFavorite(@RequestBody FavoritesEntity favorite) {
