@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import com.cali.citeats.Entity.ReviewEntity;
 import com.cali.citeats.Service.ReviewService;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/reviews")
@@ -42,7 +44,8 @@ public class ReviewController {
             review.getRestaurantId(), 
             review.getRating(), 
             review.getComment(), 
-            review.getDatePosted()
+            review.getDatePosted(),
+            review.isDeleted()
         );
     }
 
@@ -72,7 +75,30 @@ public class ReviewController {
             updatedReview.getDatePosted()
         );
     }
+    
+    @PutMapping("/softDeleteReview/{reviewId}")
+    public ReviewEntity softDeleteReview(@PathVariable int reviewId) {
+        try {
+            ReviewEntity existingReview = reviewService.getReviewById(reviewId);
 
+            if (existingReview != null) {
+                // Soft delete logic
+                reviewService.softDeleteReview(reviewId);
+                return existingReview;
+            } else {
+                // Handle case where the review is not found
+                throw new NoSuchElementException("Review not found with id: " + reviewId);
+            }
+        } catch (NoSuchElementException e) {
+            // Re-throw NoSuchElementException
+            throw e;
+        } catch (Exception e) {
+            // Handle other exceptions
+            throw new RuntimeException("Internal Server Error", e);
+        }
+    }
+
+    
     @DeleteMapping("/deleteReview/{reviewId}")
     public String deleteReview(@PathVariable int reviewId) {
         return reviewService.deleteReview(reviewId);

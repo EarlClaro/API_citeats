@@ -13,7 +13,8 @@ import com.cali.citeats.Entity.ReviewEntity;
 public interface ReviewRepository extends JpaRepository<ReviewEntity, Integer> {
 
 	List<ReviewEntity> findByRestaurantId(int restaurantId);
-    // You can add custom query methods here if needed
 	
 	List<ReviewEntity> findByUserId(int userId);
+	
+	List<ReviewEntity> findByIsDeletedFalseAndUserId(int userId);
 }

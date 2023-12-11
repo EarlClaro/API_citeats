@@ -17,8 +17,8 @@ public class ReviewService {
     private ReviewRepository reviewRepository;
 
     // Create a review
-    public ReviewEntity createReview(int userId, int restaurantId, Integer rating, String comment, Date datePosted) {
-        ReviewEntity newReview = new ReviewEntity(userId, restaurantId, rating, comment, datePosted);
+    public ReviewEntity createReview(int userId, int restaurantId, Integer rating, String comment, Date datePosted, boolean isDeleted) {
+        ReviewEntity newReview = new ReviewEntity(userId, restaurantId, rating, comment, datePosted, isDeleted);
         return reviewRepository.save(newReview);
     }
     
@@ -54,6 +54,12 @@ public class ReviewService {
             return reviewRepository.save(existingReview);
         }
         return null;
+    }
+    
+    public void softDeleteReview(int reviewId) {
+        ReviewEntity existingReview = getReviewById(reviewId);
+        existingReview.setDeleted(true);
+        reviewRepository.save(existingReview);
     }
 
     // Delete a review

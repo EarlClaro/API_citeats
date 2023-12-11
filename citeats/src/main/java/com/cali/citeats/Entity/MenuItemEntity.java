@@ -27,18 +27,30 @@ public class MenuItemEntity {
 
     @Column(name = "price", nullable = false)
     private Double price;
+    
+    @Column(name = "isDeleted", nullable = false)
+    private boolean isDeleted;
 
     public MenuItemEntity() {
         super();
     }
 
-    public MenuItemEntity(int menuItemId, int restaurantId, String name, String description, Double price) {
+    public MenuItemEntity(int menuItemId, int restaurantId, String name, String description, Double price, boolean isDeleted) {
         super();
         this.menuItemId = menuItemId;
         this.restaurantId = restaurantId;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.isDeleted = isDeleted;
+    }
+    
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     public int getMenuItemId() {

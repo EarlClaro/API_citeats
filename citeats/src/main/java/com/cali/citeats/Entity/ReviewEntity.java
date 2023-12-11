@@ -31,22 +31,35 @@ public class ReviewEntity {
 
     @Column(name = "DatePosted")
     private Date datePosted;
+    
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
+
 
     public ReviewEntity() {
         // Default constructor
     }
 
     // Constructor without ID
-    public ReviewEntity(int userId, int restaurantId, Integer rating, String comment, Date datePosted) {
+    public ReviewEntity(int userId, int restaurantId, Integer rating, String comment, Date datePosted, boolean isDeleted) {
         this.userId = userId;
         this.restaurantId = restaurantId;
         this.rating = rating;
         this.comment = comment;
         this.datePosted = datePosted;
+        this.isDeleted = isDeleted;
     }
 
     // Getters and Setters
     // (Omitted for brevity)
+    
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 
     public int getReviewId() {
         return reviewId;

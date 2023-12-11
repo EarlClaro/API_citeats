@@ -43,6 +43,20 @@ public class MenuItemService {
             return null;
         }
     }
+    
+ // Soft delete a menu item
+    public String softDeleteMenuItem(int id) {
+        Optional<MenuItemEntity> menuItemOptional = menuItemRepository.findById(id);
+
+        if (menuItemOptional.isPresent()) {
+            MenuItemEntity menuItem = menuItemOptional.get();
+            menuItem.setDeleted(true); // Set the isDeleted flag to true
+            menuItemRepository.save(menuItem);
+            return "Menu item with ID " + id + " deleted successfully (soft delete)";
+        } else {
+            return "Menu item with ID " + id + " not found";
+        }
+    }
 
     public String deleteMenuItem(int id) {
         if (menuItemRepository.existsById(id)) {

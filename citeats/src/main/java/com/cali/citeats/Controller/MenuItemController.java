@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/menuitems")
@@ -60,6 +62,23 @@ public class MenuItemController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    
+    // D - Delete a menu item (Soft Delete)
+    @PutMapping("/softDeleteMenuItem/{id}")
+    public Map<String, String> softDeleteMenuItem(@PathVariable int id) {
+        Map<String, String> response = new HashMap<>();
+        String result = menuItemService.softDeleteMenuItem(id);
+        
+        if (result.startsWith("Menu item with ID " + id + " deleted successfully")) {
+            response.put("status", "success");
+            response.put("message", result);
+        } else {
+            response.put("status", "error");
+            response.put("message", result);
+        }
+        
+        return response;
     }
 
     // D - Delete a menu item
